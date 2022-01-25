@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block >
+    <div th:fragment="addWorkspaceModal" class="modal fade show" id="addWorkspace" style="font-size: medium; display: block;" aria-modal="true"
+    role="dialog">
+    <div class="modal-dialog modal-lg  modal-dialog-centered">
+        <div class="modal-content" >
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" style="
+                text-align: center;
+                margin-left: 300px;
+            ">Add Workspace</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" style="margin-bottom: 30px; line-height: 50px;">
+                <div class="row">
+                    <div class="col">
+
+                        <input type="text" class="form-control" placeholder="" style="font-size: 14px" name="name_add"
+                               id="wspName_add" required="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Source -->
+            <ul>
+                <li><input name="123"
+                           data-src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwap102.com%2Fxem-nhung-hinh-anh-dep-nhat-canh-dep-nhat-the-gioi-2020%2F&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAD"
+                           type="radio" id="cb1">
+                    <label for="cb1"><img
+                            src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwap102.com%2Fxem-nhung-hinh-anh-dep-nhat-canh-dep-nhat-the-gioi-2020%2F&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAD"></label>
+                </li>
+                <li><input name="123"
+                           data-src="https://www.google.com/url?sa=i&url=https%3A%2F%2Felead.com.vn%2Fbo-anh-dep-thien-nhien-viet-nam-da-sac-mau-ban-dam-say&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAJ"
+                           type="radio" id="cb2">
+                    <label for="cb2"><img
+                            src="https://www.google.com/url?sa=i&url=https%3A%2F%2Felead.com.vn%2Fbo-anh-dep-thien-nhien-viet-nam-da-sac-mau-ban-dam-say&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAJ"
+                            class="hoverZoomLink"></label>
+                </li>
+                <li><input name="123"
+                           data-src="https://www.google.com/url?sa=i&url=http%3A%2F%2Fthuthuat123.com%2Fhinh-anh-mat-trang-dep-nhat%2F&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAN"
+                           type="radio" id="cb3">
+                    <label for="cb3"><img
+                            src="https://www.google.com/url?sa=i&url=http%3A%2F%2Fthuthuat123.com%2Fhinh-anh-mat-trang-dep-nhat%2F&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAN"
+                            class="hoverZoomLink"></label>
+                </li>
+                <li><input name="123"
+                           data-src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvietnamnet.vn%2Fvn%2Fthe-gioi%2Fthe-gioi-do-day%2Fnhung-noi-dep-hut-hon-gianh-giai-thuong-nhiep-anh-du-lich-the-gioi-542082.html&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAX"
+                           type="radio" id="cb4">
+                    <label for="cb4"><img
+                            src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvietnamnet.vn%2Fvn%2Fthe-gioi%2Fthe-gioi-do-day%2Fnhung-noi-dep-hut-hon-gianh-giai-thuong-nhiep-anh-du-lich-the-gioi-542082.html&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAX"
+                            class="hoverZoomLink"></label>
+                </li>
+                <li><input name="123"
+                           data-src="https://www.google.com/url?sa=i&url=https%3A%2F%2Flbm.vn%2Fchup-anh-dep-voi-anh-sang-ben%2F&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAh"
+                           type="radio" id="cb5">
+                    <label for="cb4"><img
+                            src="https://www.google.com/url?sa=i&url=https%3A%2F%2Flbm.vn%2Fchup-anh-dep-voi-anh-sang-ben%2F&psig=AOvVaw3Pj8dl9JdnHtODQ5l6cBk6&ust=1642898277022000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjV4ZWPxPUCFQAAAAAdAAAAABAh"
+                            class="hoverZoomLink"></label>
+                </li>
+            </ul>
+            <!-- Modal footer -->
+            <div class="modal-footer" style="
+    margin-right: 200px;
+">
+                <button type="submit" class="btn btn-outline-primary"
+                        style="border: 1px solid #0d6efd;padding: 4px;margin-right: 10px;" data-bs-dismiss="modal">Add
+                </button>
+                <button type="button" class="btn btn-secondary"
+                        style="margin-right: 160px;border: 1px solid #E2E4E6;padding: 4px;" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+</th:block>
+
+<th:block th:fragment="deleteWorkspaceModal">
+    <div class="modal fade" id="confirm-delete">
+        <div class="modal-dialog modal-dialog-centered">
+            <form action="/workspace?action=delete" method="post">
+
+
+                <div class="modal-content" style="font-size: medium;line-height: 40px;">
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <i class="fas fa-exclamation-circle fa-7x" style="color: red; margin-left: 150px;"></i>
+                            <input style="display: none" name="wspID" id="delete_wspID">
+                        </div>
+
+                        <div id="textEx">
+                            <p>Are you sure you want to delete the selected workspace ?</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary"
+                                style="margin-right: 10px; border: 1px solid blue; padding: 0px 6px; border-radius: 15px ; "
+                                data-bs-dismiss="modal">Yes, delete it !
+                        </button>
+                        <button type="button" class="btn btn-danger"
+                                style="margin-right: 110px;border: 1px solid red; padding: 0px 5px;border-radius: 15px ;"
+                                id="btn-cancel" data-bs-dismiss="modal">Cancel
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</th:block>
+
+<th:block th:fragment="editWorkspaceModal">
+    <div class="modal fade" id="editWorkspace" style="font-size: medium;">
+        <div class="modal-dialog modal-md  modal-dialog-centered">
+            <div class="modal-content" style="background-color: #66A3C7;border-radius: 20px;">
+                <form action="${pageContext.request.contextPath}/workspace?action=edit" method="post">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Workspace</h4>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" style="margin-bottom: 30px; line-height: 50px;">
+                        <div class="row">
+                            <div class="col">
+                                <label for="wspName_edit">Workspace name</label>
+                                <input type="text" class="form-control" placeholder="" style="font-size: 14px"
+                                       name="name_edit" id="wspName_edit" required>
+                                <input style="display: none" name="wspID_edit_ID" id="id_thisWorkspace">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-primary"
+                                style="border: 1px solid #0d6efd;padding: 4px;margin-right: 10px;"
+                                data-bs-dismiss="modal">Save
+                        </button>
+                        <button type="button" class="btn btn-secondary"
+                                style="margin-right: 160px;border: 1px solid #E2E4E6;padding: 4px;"
+                                data-bs-dismiss="modal">Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block th:fragment="shareWorkspaceModal">
+    <div class="modal fade" id="shareWorkspace" style=" font-size: medium;">
+        <div class="modal-dialog modal-md  modal-dialog-centered">
+            <div class="modal-content" style="background-color: #66A3C7;border-radius: 20px;">
+                <form action="${pageContext.request.contextPath}/workspace?action=share" method="post">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Share Workspace</h4>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" style="margin-bottom: 30px; line-height: 50px;">
+                        <div class="row">
+                            <div class="col">
+                                <label for="user_email">Other user email</label>
+                                <input type="text" class="form-control" placeholder="" style="font-size: 14px"
+                                       name="orther_user_email" id="user_email" required>
+                                <input type="number" style="display: none" name="wspId_share"
+                                       id="id_workspace_to_share">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-primary"
+                                style="border: 1px solid #0d6efd;padding: 4px;margin-right: 10px;"
+                                data-bs-dismiss="modal">Add
+                        </button>
+                        <button type="button" class="btn btn-secondary"
+                                style="margin-right: 160px;border: 1px solid #E2E4E6;padding: 4px;"
+                                data-bs-dismiss="modal">Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>

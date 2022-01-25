@@ -1,0 +1,799 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+
+  <link rel="icon" th:href="@{/dashboard/img/mdb-favicon.ico}" type="image/x-icon"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"/>
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"/>
+  <!-- MDB -->
+
+  <link rel="stylesheet" th:href="@{/dashboard/css/mdb.min.css}">
+  <link rel="stylesheet" th:href="@{/dashboard/css/list.css}">
+  <link rel="stylesheet" th:href="@{/login-template/css/sweetalert2.min.css}">
+  <script th:src="@{/login-template/js/jquery-validate.js}"></script>
+  <script th:src="@{/login-template/js/app.js}"></script>
+  <script th:src="@{/login-template/js/sweetalert2.min.js}"></script>
+  <style>
+    body,
+    main {
+      height: 100%;
+    }
+
+    .mask {
+      padding-top: 58px;
+    }
+
+    @media (min-width: 992px) {
+      .mask {
+        padding-top: 121.27px;
+      }
+    }
+
+    .card {
+      min-width: 272px;
+      max-width: 272px;
+      height: auto;
+      background-color: #ebecf0;
+    }
+
+    input[type="radio"][id^="cb"] {
+      display: none;
+    }
+
+    label {
+      border: 1px solid #fff;
+      padding: 10px;
+      display: block;
+      position: relative;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    label:before {
+      background-color: white;
+      color: white;
+      content: " ";
+      display: block;
+      border-radius: 50%;
+      border: 1px solid grey;
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      line-height: 28px;
+      transition-duration: 0.4s;
+      transform: scale(0);
+    }
+
+    label img {
+      height: 100px;
+      width: 100px;
+      transition-duration: 0.2s;
+      transform-origin: 50% 50%;
+    }
+
+    :checked + label {
+      border-color: #ddd;
+    }
+
+    :checked + label:before {
+      content: "✓";
+      background-color: grey;
+      transform: scale(1);
+    }
+
+    :checked + label img {
+      transform: scale(0.9);
+      box-shadow: 0 0 5px #333;
+      z-index: -1;
+    }
+
+    .img-li-radio {
+      display: inline-block;
+    }
+
+    #sortable {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 60%;
+    }
+
+    #sortable li {
+      margin: 0 3px 3px 3px;
+      padding: 0.4em;
+      padding-left: 1.5em;
+      font-size: 1.4em;
+      height: 18px;
+    }
+
+    #sortable li span {
+      position: absolute;
+      margin-left: -1.3em;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      $(".simple_with_animation").sortable();
+    });
+  </script>
+
+</head>
+
+<body>
+<!-- Header -->
+<header class="mb-4 fixed-top">
+  <!-- Jumbotron -->
+  <div class="p-3 text-center bg-white border-bottom">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Right elements -->
+        <div
+                class="col-md-5 d-flex justify-content-center justify-content-md-start align-items-center d-none d-lg-flex">
+          <a class="text-reset me-3" href="#">
+            <i class="fas fa-th-large"></i>
+          </a>
+          <a class="text-reset me-3" href="#">
+            <i class="fas fa-home"></i>
+          </a>
+          <a class="text-reset me-3" href="#">
+            <i class="fas fa-columns me-1"></i>
+            <span class="d-none d-xl-inline-block">Boards</span>
+          </a>
+
+          <form class="d-flex input-group w-auto my-auto mb-3 mb-md-0">
+            <input autocomplete="off" type="search" class="form-control rounded" placeholder="Search"/>
+            <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
+          </form>
+        </div>
+        <!-- Right elements -->
+
+        <!-- Center elements -->
+        <div class="col-md-2 d-none d-lg-block">
+          <a href="#!" class="ms-md-2">
+            <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="35"/>
+          </a>
+        </div>
+        <!-- Center elements -->
+
+        <!-- Right elements -->
+        <div class="col-lg-5 d-flex justify-content-center justify-content-md-end align-items-center">
+          <a class="text-reset me-3" href="#">
+            <i class="fas fa-plus"></i>
+          </a>
+          <a class="text-reset me-3" href="#">
+            <i class="fas fa-info-circle"></i>
+          </a>
+
+          <!-- Notification -->
+          <div class="dropdown">
+            <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button"
+               data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-bell"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Some news</a></li>
+              <li><a class="dropdown-item" href="#">Another news</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- User -->
+          <div class="dropdown">
+            <a class="text-reset dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+               id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22"
+                   alt="" loading="lazy"/>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">My profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" th:href="@{/}">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- Right elements -->
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white d-none d-lg-block">
+    <!-- Container wrapper -->
+    <div class="container-fluid justify-content-center justify-content-md-between">
+      <!-- Left elements -->
+      <div class="d-flex align-items-center">
+        <button class="btn btn-outline-primary me-1 mx-2" data-mdb-ripple-color="dark" type="button">
+          <i class="fas fa-clipboard-list me-1"></i>Board
+        </button>
+        <input type="text" id="wsp-name" class="btn btn-outline-primary me-1" readonly>
+        <div class="dropdown">
+          <a class="btn btn-outline-primary btn-link me-1 mx-2" href="#" id="navbarDropdownMenuLink" role="button"
+             data-mdb-toggle="dropdown" aria-expanded="false" data-mdb-ripple-color="dark">
+            <i class="fas fa-list"></i>
+            &nbsp;
+            List Workspace
+          </a>
+
+          <ul id="workspaces" th:data-id="${user.id}" class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="navbarDropdownMenuLink">
+
+          </ul>
+        </div>
+
+        <button id="addWspModalBtn" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Create new workspace"
+                class="btn btn-outline-primary me-1 px-2 mx-2" data-mdb-ripple-color="dark" type="button">
+          <i class="fas fa-plus"></i>
+        </button>
+        <button id="editWspModalBtn" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Edit this workspace"
+                class="btn btn-outline-primary me-1 px-2 mx-2" data-mdb-ripple-color="dark" type="button">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button id="deleteWspConfirmBtn" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Delete this workspace"
+                class="btn btn-outline-primary me-1 px-2 mx-2" data-mdb-ripple-color="dark" type="button">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <button data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Set workspace favorite"
+                class="btn btn-outline-primary me-1 px-2 mx-2" data-mdb-ripple-color="dark" type="button">
+          <i class="fas fa-star"></i>
+        </button>
+        <div class="drop-down">
+          <a class="btn btn-outline-primary btn-link me-1 mx-2" href="#" id="navbarDropdownMenuLink" role="button"
+             data-mdb-toggle="dropdown" aria-expanded="false" data-mdb-ripple-color="dark">
+            <i class="fas fa-users me-2"></i>Team
+          </a>
+
+          <ul id="team-list" class="dropdown-menu " style="margin-left: 650px"
+              aria-labelledby="navbarDropdownMenuLink">
+
+          </ul>
+        </div>
+
+        <a href="">
+          <img src="https://mdbootstrap.com/img/new/avatars/5.jpg" class="border rounded-circle" alt=""
+               style="height: 30px"/>
+        </a>
+        <button type="button" class="btn btn-outline-primary btn-floating btn me-1" style="height: 30px; width: 30px">
+          +2
+        </button>
+        <div id="invite-email">
+          <button class="btn btn-outline-primary me-1" data-mdb-ripple-color="dark" type="button">
+            <i class="fas fa-user-plus me-2"></i>Invite
+          </button>
+        </div>
+
+      </div>
+      <!-- Left elements -->
+
+      <!-- Right elements -->
+      <div>
+        <button class="btn btn-outline-primary" data-mdb-ripple-color="dark" type="button">
+          <i class="fas fa-concierge-bell me-1"></i>Tips
+        </button>
+        <button class="btn btn-outline-primary" data-mdb-ripple-color="dark" type="button">
+          <i class="fas fa-bars me-2"></i>Show menu
+        </button>
+      </div>
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main id="intro" class="bg-image" th:style="
+            'height: 100vh;'
+          ">
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.7)">
+
+    <section class="lists-container" >
+
+
+      <div class="list">
+
+        <h3 class="list-title">Tasks to Do</h3>
+
+        <ul class="list-items simple_with_animation">
+          <li>Complete mock-up for client website</li>
+          <li>Email mock-up to client for feedback</li>
+          <li>Update personal website header background image</li>
+          <li>Update personal website heading fonts</li>
+          <li>Add google map to personal website</li>
+          <li>Begin draft of CSS Grid article</li>
+          <li>Read new CSS-Tricks articles</li>
+          <li>Read new Smashing Magazine articles</li>
+          <li>Read other bookmarked articles</li>
+          <li>Look through portfolios to gather inspiration</li>
+          <li>Create something cool for CodePen</li>
+          <li>Post latest CodePen work on Twitter</li>
+          <li>Listen to new Syntax.fm episode</li>
+          <li>Listen to new CodePen Radio episode</li>
+        </ul>
+
+        <button class="add-card-btn btn">Add a card</button>
+
+      </div>
+
+      <div class="list">
+
+        <h3 class="list-title">Completed Tasks</h3>
+
+        <ul class="list-items simple_with_animation">
+          <li>Clear email inbox</li>
+          <li>Finalise requirements for client web design</li>
+          <li>Begin work on mock-up for client website</li>
+        </ul>
+
+        <button class="add-card-btn btn">Add a card</button>
+
+      </div>
+
+      <button class="add-list-btn btn">Add a list</button>
+
+    </section>
+
+    <!--    </section>-->
+  </div>
+</main>
+<!--Main layout-->
+<!-- Modal   -->
+<!--    Add Workspace Modal  -->
+<div class="modal fade" id="addWorkspaceModal" style="font-size: medium;">
+  <div class="modal-dialog modal-lg  modal-dialog-centered">
+    <div class="modal-content " style="background-color: #66A3C7;border-radius: 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="
+    margin-left: 300px;
+    font-size: 30px;
+">Add Workspace</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="margin-bottom: 30px; line-height: 50px;">
+
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Input workspace name"
+                   style="font-size: 14px;width: 500px;margin-left: 150px;"
+                   name="name" id="wspName_add" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source -->
+      <div class="row">
+        <lable style="
+    font-size: 20px;
+    margin-left: 200px;
+    font-weight: bold;
+"> Please choice workspace background image
+        </lable>
+      </div>
+
+      <ul>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-12.jpg"
+                                        type="radio" id="cb1"/>
+          <label for="cb1"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-12.jpg"/></label>
+        </li>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-6.jpg"
+                                        type="radio" id="cb2"/>
+          <label for="cb2"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-6.jpg"/></label>
+        </li>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-4.jpg"
+                                        type="radio" id="cb3"/>
+          <label for="cb3"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-4.jpg"/></label>
+        </li>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-8.jpg"
+                                        type="radio" id="cb4"/>
+          <label for="cb4"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-8.jpg"/></label>
+        </li>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-18.jpg"
+                                        type="radio" id="cb5"/>
+          <label for="cb5"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-18.jpg"/></label>
+        </li>
+      </ul>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" id="addWorkspaceBtn" class="btn btn-outline-primary"
+                style="border: 1px solid #0d6efd;padding: 4px;margin-right: 10px;" data-bs-dismiss="modal">Add
+        </button>
+        <button type="button" id="closeAddWspModal" class="btn btn-secondary"
+                style="margin-right: 330px;border: 1px solid #E2E4E6;padding: 4px;"
+                data-bs-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Edit Workspace -->
+
+<div class="modal fade" id="editWorkspaceModal" style="font-size: medium;">
+  <div class="modal-dialog modal-lg  modal-dialog-centered">
+    <div class="modal-content " style="background-color: #66A3C7;border-radius: 20px;">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="
+    margin-left: 300px;
+    font-size: 30px;
+">Edit Workspace</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="margin-bottom: 30px; line-height: 50px;">
+
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Input workspace name"
+                   style="font-size: 14px;width: 500px;margin-left: 150px;"
+                   name="name" id="wspName_edit" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source -->
+      <div class="row">
+        <lable style="
+    font-size: 20px;
+    margin-left: 200px;
+    font-weight: bold;
+"> Please choice workspace background image
+        </lable>
+      </div>
+
+      <ul>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-12.jpg"
+                                        type="radio" id="cb6"/>
+          <label for="cb6"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-12.jpg"/></label>
+        </li>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-6.jpg"
+                                        type="radio" id="cb7"/>
+          <label for="cb7"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-6.jpg"/></label>
+        </li>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-4.jpg"
+                                        type="radio" id="cb8"/>
+          <label for="cb8"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-4.jpg"/></label>
+        </li>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-8.jpg"
+                                        type="radio" id="cb9"/>
+          <label for="cb9"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-8.jpg"/></label>
+        </li>
+        <li class="img-li-radio"><input name="filePath"
+                                        data-src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-18.jpg"
+                                        type="radio" id="cb10"/>
+          <label for="cb10"><img
+                  src="https://s.meta.com.vn/img/thumb.ashx/Data/image/2022/01/13/anh-dep-thien-nhien-18.jpg"/></label>
+        </li>
+      </ul>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" id="editWorkspaceBtn" class="btn btn-outline-primary"
+                style="border: 1px solid #0d6efd;padding: 4px;margin-right: 10px;" data-bs-dismiss="modal">Add
+        </button>
+        <button type="button" id="closeEditWspModal" class="btn btn-secondary"
+                style="margin-right: 330px;border: 1px solid #E2E4E6;padding: 4px;"
+                data-bs-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MDB -->
+
+<script th:src="@{/dashboard/js/mdb.min.js}"></script>
+<!-- Custom scripts -->
+<script th:src="@{/dashboard/js/sort.js}"></script>
+
+<script th:src="@{/dashboard/js/wsp.js}"></script>
+
+<script>
+  if ($(".list").get().length > 3) {
+    $('.add-list-btn').css("flex", "0 0 15rem");
+  }
+
+  function setBackgroundImage() {
+    let wspId = $('.wsp-item').data('id');
+    if(wspId==null) {
+      $('#intro').css('background-image','url(https://genk.mediacdn.vn/2018/2/8/photo-0-151808631425575789599.jpg)');
+    } else {
+      $.ajax({
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        type: 'get',
+        url: "/workspace/" + wspId
+      }).done(function (response) {
+        if(response.filePath!=null) {
+          $('#intro').css('background-image','url(' + response.filePath + ')');
+        }
+
+      })
+    }
+  }
+  $(document).ready(function () {
+    getAllWorkspace();
+    changeWsp();
+    showAddWorkspaceModal();
+    showEditWorkspaceModal();
+    showConfirmDelete();
+    deleteWorkspace();
+    showInput();
+  });
+
+  function getAllWorkspace() {
+    let id = $('#workspaces').data('id');
+    $.ajax({
+      type: 'get',
+      url: '/workspace/all/' + id
+    }).done(function (response) {
+      var html = "";
+      if (response.length === 0) {
+        $('#addWorkspaceModal').modal('show')
+      } else {
+        $.each(response, function (key, value) {
+          html += `<li><a data-id="${value.id}" class="dropdown-item wsp-item" href='#'>  ${value.name}  </a></li>`;
+        });
+        console.log(html);
+      }
+      if (response != "") {
+        $("#workspaces").html(html);
+      }
+      showWspName();
+      changeWsp();
+    })
+    setBackgroundImage();
+
+  }
+  function showAddWorkspaceModal() {
+    $('#addWspModalBtn').on('click',function () {
+      $('#addWorkspaceModal').modal('show');
+    })
+    addWorkspace();
+    $('#closeAddWspModal').on('click',function () {
+      $('#addWorkspaceModal').modal('hide');
+    })
+  }
+  function addWorkspace() {
+    $('#addWorkspaceBtn').on('click',function () {
+      let today = new Date();
+      let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+      let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      let dateTime = date+' '+time;
+      let newWsp = new Workspace($('#wspName_add').val(),
+              $('input[name="filePath"]:checked').data("src"),dateTime)
+      $.ajax({
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        type: 'post',
+        url: "/workspace/"+ $('#workspaces').data('id')+"/create",
+        data: JSON.stringify(newWsp)
+      }).done(function (response) {
+        App.showSuccessAlert("Success");
+        $('#addWorkspaceModal').modal('hide');
+        let str = `<li><a data-id="${response.id}" class="dropdown-item wsp-item" href='#'>  ${response.name}  </a></li>`
+        $("#workspaces").prepend(str);
+        setBackgroundImage();
+        showWspName();
+        changeWsp();
+      }).fail(function () {
+          App.showErrorAlert("Tên không gian làm việc không được để trống");
+      })
+    })
+  }
+
+  function showWspName() {
+    let wspId = $('.wsp-item').data('id');
+    $.ajax({
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      type: 'get',
+      url: "/workspace/" + wspId
+    }).done(function (response) {
+      $('#wsp-name').val(response.name);
+      showTeamList();
+    })
+  }
+  function showEditWorkspaceModal() {
+
+    $('#editWspModalBtn').on('click',function () {
+      $('#editWorkspaceModal').modal('show');
+      let wspId = $('.wsp-item').data('id');
+      $.ajax({
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        type: 'get',
+        url: "/workspace/" + wspId
+      }).done(function (response) {
+        $('#wspName_edit').val(response.name);
+        editWorkspace(wspId);
+      })
+    })
+
+    $('#closeEditWspModal').on('click',function () {
+      $('#editWorkspaceModal').modal('hide');
+    })
+  }
+
+  function editWorkspace(wspId) {
+   $('#editWorkspaceBtn').on('click',function () {
+     let newWsp = new Workspace($('#wspName_edit').val(),
+             $('input[name="filePath"]:checked').data("src"))
+     $.ajax({
+       headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
+       },
+       type: 'put',
+       url: "/workspace/edit/"+ wspId,
+       data: JSON.stringify(newWsp)
+     }).done(function () {
+       App.showSuccessAlert("Success");
+       $('#editWorkspaceModal').modal('hide');
+       getAllWorkspace();
+       showTeamList();
+       changeWsp();
+     }).fail(function () {
+       App.showErrorAlert("Tên không gian làm việc không được để trống");
+     })
+   })
+  }
+  function showConfirmDelete() {
+    $('#deleteWspConfirmBtn').on('click',function () {
+      App.showDeleteConfirmDialog();
+      deleteWorkspace();
+    })
+
+  }
+
+  function deleteWorkspace() {
+    $('.swal2-confirm').on('click',function () {
+      let wspId = $('.wsp-item').data('id');
+      $.ajax({
+        type: "delete",
+        url: "/workspace/delete/"+$('#workspaces').data('id')+"/"+wspId,
+      }).done(function (e) {
+        console.log(e);
+        getAllWorkspace();
+        setBackgroundImage();
+        showWspName();
+        changeWsp();
+      })
+    })
+  }
+  
+  function showTeamList() {
+    let wspId = $('.wsp-item').data('id');
+    $.ajax({
+      type: 'get',
+      url: '/user/all/' + wspId
+    }).done(function (response) {
+      var html = "";
+
+        $.each(response, function (key, value) {
+          html += `<li><a data-id="${value.id}" class="dropdown-item " href='#'>  ${value.email}  </a></li>`;
+        });
+        console.log(html);
+
+      if (response != "") {
+        $("#team-list").html(html);
+      }
+    })
+  }
+
+  function showInput() {
+    $('#invite-email button').on('click',function () {
+      let str = `  <input type="email" name="" class="btn btn-outline-primary" id="email-request">
+                <button id= "send-request" class="btn btn-outline-primary" style="margin-left: 5px;">Send</button>`
+      $('#invite-email').html(str);
+      invite();
+
+    })
+  }
+
+
+  function invite() {
+    $('#send-request').on('click',function() {
+      let wspId = $('.wsp-item').data('id');
+      let email = $('#email-request').val();
+
+      $.ajax({
+        type: "post",
+        url: "/workspace/invite/"+wspId+"/"+email
+      }).done(function () {
+        let str = ` <button class="btn btn-outline-primary me-1" data-mdb-ripple-color="dark" type="button">
+                      <i class="fas fa-user-plus me-2"></i>Invite
+                    </button>`
+        $('#invite-email').html(str);
+        showInput();
+        App.showSuccessAlert("Success");
+        showTeamList();
+        changeWsp();
+      }).fail(function (e) {
+        switch (e.status) {
+          case 400:
+            App.showErrorAlert("Email đã được mời vào nhóm!");
+            break;
+            case 404:
+              App.showErrorAlert("Email không tồn tại!");
+              break;
+        }
+
+      })
+
+    })
+  }
+
+  function changeWsp() {
+      $('.wsp-item').on('click',function () {
+         let wspId = $(this).data('id');
+         $(this).parent().remove();
+        $.ajax({
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          type: 'get',
+          url: "/workspace/" + wspId
+        }).done(function (response) {
+          let str = `<li><a data-id="${response.id}" class="dropdown-item wsp-item" href='#'>  ${response.name}  </a></li>`
+          $("#workspaces").prepend(str);
+          setBackgroundImage();
+          showWspName();
+        })
+      })
+  }
+</script>
+
+</body>
+
+</html>
+
