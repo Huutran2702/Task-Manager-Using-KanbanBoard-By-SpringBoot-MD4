@@ -37,7 +37,11 @@ public class LoginController {
     public ModelAndView submit(@Valid @ModelAttribute User user, BindingResult bindingResult, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("/login/index");
       User findUser =  userService.findUserByEmail(user.getEmail());
-        UserDTO userDTO = modelMapper.map(findUser,UserDTO.class);
+        UserDTO userDTO = null;
+      if (findUser!=null) {
+         userDTO = modelMapper.map(findUser,UserDTO.class);
+      }
+
 
         if (bindingResult.hasFieldErrors()) {
             modelAndView.addObject("messages", "Thông tin đăng nhập không hợp lệ!");

@@ -709,7 +709,7 @@
       })
     })
   }
-  
+
   function showTeamList() {
     let wspId = $('.wsp-item').data('id');
     $.ajax({
@@ -718,10 +718,15 @@
     }).done(function (response) {
       var html = "";
 
-        $.each(response, function (key, value) {
-          html += `<li><a data-id="${value.id}" class="dropdown-item " href='#'>  ${value.email}  </a></li>`;
-        });
-        console.log(html);
+      $.each(response, function (key, value) {
+        html += `<li><a data-id="${value.id}" class="dropdown-item " href='#'>  ${value.email}  </a></li>`;
+      });
+      if (response.length<=1) {
+        $('.member-quantity').hide();
+      } else {
+        $('.member-quantity').show().text('+'+(response.length-1));
+      }
+      console.log(response.length);
 
       if (response != "") {
         $("#team-list").html(html);
